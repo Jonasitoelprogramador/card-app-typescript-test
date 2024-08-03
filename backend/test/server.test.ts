@@ -31,8 +31,8 @@ it("should fetch entries", async () => {
   });
 
   expect(JSON.parse(response.payload)).toEqual(entries),
-    expect(response.statusCode).toEqual(200),
-    expect(Prisma.entry.findMany).toHaveBeenCalledTimes(1);
+  expect(response.statusCode).toEqual(200),
+  expect(Prisma.entry.findMany).toHaveBeenCalledTimes(1);
 });
 
 it("should fetch a single entry - success", async () => {
@@ -107,7 +107,14 @@ it("should post a single entry - failed", async () => {
       scheduled_date: "2024-01-01",
     },
   });
-  return expect(response.statusCode).toEqual(500), expect(response.json()).toEqual({ msg: "Error creating entry" });
+  expect(response.statusCode).toEqual(500)
+  expect(response.json()).toEqual({ msg: "Error creating entry" })
+  expect(Prisma.entry.create).toHaveBeenCalledWith({ data: expect.objectContaining({
+    title: 'string',
+    description: 'string',
+    created_at: new Date('2024-01-01'),
+    scheduled_date: new Date('2024-01-01')
+ }) });
 });
 
 it("should delete an entry - success", async () => {
@@ -115,7 +122,9 @@ it("should delete an entry - success", async () => {
     method: "DELETE",
     url: "/delete/1",
   });
-  return expect(response.statusCode).toEqual(200), expect(response.json()).toEqual({ msg: "Deleted successfully" });
+  expect(response.statusCode).toEqual(200)
+  expect(response.json()).toEqual({ msg: "Deleted successfully" })
+  expect(Prisma.entry.delete).toHaveBeenCalledWith({ where: { id: "1" } });
 });
 
 it("should delete an entry - failed", async () => {
@@ -124,7 +133,9 @@ it("should delete an entry - failed", async () => {
     method: "DELETE",
     url: "/delete/1",
   });
-  return expect(response.statusCode).toEqual(500), expect(response.json()).toEqual({ msg: "Error deleting entry" });
+  expect(response.statusCode).toEqual(500)
+  expect(response.json()).toEqual({ msg: "Error deleting entry" })
+  expect(Prisma.entry.delete).toHaveBeenCalledWith({ where: { id: "1" } })
 });
 
 it("should update an entry - success", async () => {
@@ -138,7 +149,17 @@ it("should update an entry - success", async () => {
       scheduled_date: "2024-01-01",
     },
   });
-  return expect(response.statusCode).toEqual(200), expect(response.json()).toEqual({ msg: "Updated successfully" });
+  expect(response.statusCode).toEqual(200) 
+  expect(response.json()).toEqual({ msg: "Updated successfully" })
+  expect(Prisma.entry.update).toHaveBeenCalledWith({
+    data: expect.objectContaining({
+      title: 'string',
+      description: 'string',
+      created_at: new Date('2024-01-01'),
+      scheduled_date: new Date('2024-01-01')
+    }),
+    where: { id: "1" }
+ });
 });
 
 it("should update an entry - failed", async () => {
@@ -153,5 +174,15 @@ it("should update an entry - failed", async () => {
       scheduled_date: "2024-01-01",
     },
   });
-  return expect(response.statusCode).toEqual(500), expect(response.json()).toEqual({ msg: "Error updating" });
+  expect(response.statusCode).toEqual(500)
+  expect(response.json()).toEqual({ msg: "Error updating" })
+  expect(Prisma.entry.update).toHaveBeenCalledWith({
+    data: expect.objectContaining({
+      title: 'string',
+      description: 'string',
+      created_at: new Date('2024-01-01'),
+      scheduled_date: new Date('2024-01-01')
+    }),
+    where: { id: "1" }
+ });
 });

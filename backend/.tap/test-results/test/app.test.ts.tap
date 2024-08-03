@@ -1,0 +1,66 @@
+TAP version 14
+# Subtest: requests the "/get/" route
+    not ok 1 - invalid property in hasOwnProps assertion
+      ---
+      invalidProperty:
+        id: string
+        title: string
+        description: string
+        created_at: 2024-01-01T00:00:00.000Z
+        scheduled_date: 2024-01-01T00:00:00.000Z
+      at:
+        fileName: test/app.test.ts
+        lineNumber: 11
+        columnNumber: 7
+        isToplevel: true
+      stack: |
+        test/app.test.ts:11:7
+        step (test/app.test.ts:33:22)
+        Object.next (test/app.test.ts:14:52)
+        fulfilled (test/app.test.ts:5:57)
+      source: >2
+              url: '/get/'
+            })
+            t.hasOwnProps(JSON.parse(response.payload), [{id:"string",title:"string",description:"string",created_at:"2024-01-01T00:00:00.000Z",scheduled_date:"2024-01-01T00:00:00.000Z"}], "payload is correct structure")
+        ------^
+            t.equal(response.statusCode, 200, 'returns a status code of 200')
+          })
+      diff: |
+        --- expected
+        +++ actual
+        @@ -1,9 +1,9 @@
+         Array [
+           Object {
+        -    "id": "string",
+        -    "title": "string",
+        -    "description": "string",
+        -    "created_at": "2024-01-01T00:00:00.000Z",
+        -    "scheduled_date": "2024-01-01T00:00:00.000Z",
+        +    "id": "43ba75d3-7ef8-44cc-87ad-e3e5f1fe1a6b",
+        +    "title": "hello",
+        +    "description": "hello",
+        +    "created_at": "2024-07-30T15:23:31.233Z",
+        +    "scheduled_date": "2024-07-30T15:23:31.233Z",
+           },
+         ]
+      ...
+    
+    ok 2 - returns a status code of 200
+    1..2
+not ok 1 - requests the "/get/" route # time=73.28ms
+  ---
+  at:
+    fileName: test/app.test.ts
+    lineNumber: 6
+    columnNumber: 6
+    typeName: Object
+  source: |
+    import { server } from '../src/server'
+  
+    test('requests the "/get/" route', async (t: any) => {
+    -----^
+        const response = await server.inject({
+          method: 'GET',
+  ...
+
+1..1

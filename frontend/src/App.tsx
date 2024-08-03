@@ -1,9 +1,9 @@
-import React from "react";
+import { useContext, useState } from "react";
 import NavBar from './components/NavBar'
 import AllEntries from './routes/AllEntries'
 import NewEntry from './routes/NewEntry'
 import EditEntry from './routes/EditEntry'
-import { EntryProvider } from './utilities/globalContext'
+import { EntryContext, EntryProvider } from './utilities/globalContext'
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,11 +11,15 @@ import {
 } from "react-router-dom";
 
 export default function App() {
+  const [darkModeValue, setDarkModeValue] = useState<boolean>(false)
+  const toggleDarkMode = (darkModeValue: boolean) => {
+    setDarkModeValue((darkModeValue))
+  }
   return (
-    <section>
-  <Router>
+  <section className={`${darkModeValue ? "dark" : ""}`}>
+    <Router>
     <EntryProvider>
-    <NavBar></NavBar>
+      <NavBar darkModeValue={darkModeValue} toggleDarkMode={toggleDarkMode}></NavBar>
       <Routes>
         <Route path="/" element={<AllEntries/>}>
         </Route>
@@ -26,7 +30,7 @@ export default function App() {
       </Routes>
     </EntryProvider>
     </Router>
-    </section>
+  </section>
     
   );
 }

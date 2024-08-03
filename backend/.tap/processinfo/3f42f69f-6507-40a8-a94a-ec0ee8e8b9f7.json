@@ -1,9 +1,6 @@
 {
   "date": "2024-08-01T09:28:51.631Z",
-  "argv": [
-    "/usr/local/bin/node",
-    "/Users/joelloyd/Documents/card-app-typescript-test/backend/test/app.test.ts"
-  ],
+  "argv": ["/usr/local/bin/node", "/Users/joelloyd/Documents/card-app-typescript-test/backend/test/app.test.ts"],
   "execArgv": [
     "--loader=file:///Users/joelloyd/Documents/card-app-typescript-test/backend/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/esm.mjs",
     "--loader=file:///Users/joelloyd/Documents/card-app-typescript-test/backend/node_modules/@tapjs/mock/dist/esm/legacy-loader.mjs",
@@ -28,9 +25,5 @@
   "code": 1,
   "signal": null,
   "runtime": 327.066375,
-  "globalsAdded": [
-    "DEBUG",
-    "DEBUG_COLORS",
-    "NODE_CLIENT"
-  ]
+  "globalsAdded": ["DEBUG", "DEBUG_COLORS", "NODE_CLIENT"]
 }

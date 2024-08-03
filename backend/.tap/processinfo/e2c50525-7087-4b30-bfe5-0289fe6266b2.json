@@ -1,9 +1,6 @@
 {
   "date": "2024-08-01T09:28:51.631Z",
-  "argv": [
-    "/usr/local/bin/node",
-    "/Users/joelloyd/Documents/card-app-typescript-test/backend/test/server.test.ts"
-  ],
+  "argv": ["/usr/local/bin/node", "/Users/joelloyd/Documents/card-app-typescript-test/backend/test/server.test.ts"],
   "execArgv": [
     "--loader=file:///Users/joelloyd/Documents/card-app-typescript-test/backend/node_modules/@isaacs/ts-node-temp-fork-for-pr-2009/esm.mjs",
     "--loader=file:///Users/joelloyd/Documents/card-app-typescript-test/backend/node_modules/@tapjs/mock/dist/esm/legacy-loader.mjs",
@@ -17,9 +14,7 @@
   "ppid": 23377,
   "parent": null,
   "uuid": "e2c50525-7087-4b30-bfe5-0289fe6266b2",
-  "files": [
-    "/Users/joelloyd/Documents/card-app-typescript-test/backend/test/server.test.ts"
-  ],
+  "files": ["/Users/joelloyd/Documents/card-app-typescript-test/backend/test/server.test.ts"],
   "sources": {},
   "root": "e2c50525-7087-4b30-bfe5-0289fe6266b2",
   "externalID": "test/server.test.ts",
